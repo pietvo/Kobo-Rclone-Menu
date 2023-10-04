@@ -14,7 +14,7 @@ There are many more - see https://rclone.org/docs/ for the full list.
 
 ## <a name="installation"></a>Installation
 
-Download the latest `KoboRoot.tgz` from the Release page (or using [this direct link](https://github.com/fsantini/KoboCloud/releases/download/latest/KoboRoot.tgz)).
+Download the latest `KoboRoot.tgz` from the Release page (or using [this direct link](https://github.com/marklar423/KoboCloud-rclone/releases/tag/latest)).
 
 Copy it into the Kobo device:
 
