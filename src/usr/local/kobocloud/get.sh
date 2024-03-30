@@ -13,8 +13,15 @@ if grep -q '^UNINSTALL$' $UserConfig; then
     exit 0
 fi
 
+RCLONE_OP=""
 if grep -q "^REMOVE_DELETED$" $UserConfig; then
 	echo "$Lib/filesList.log" > "$Lib/filesList.log"
+    echo "Will delete files no longer present on remote"
+    # Remove deleted, do a sync.
+    RCLONE_OP="sync"
+else
+    # Don't remove deleted, do a copy.
+    RCLONE_OP="copy"
 fi
 
 
@@ -66,23 +73,14 @@ fi
 while read url || [ -n "$url" ]; do
   if echo "$url" | grep -q '^#'; then
     continue
-  elif echo "$url" | grep -q "^REMOVE_DELETED$"; then
-	  echo "Will delete files no longer present on remote"
   elif [ -n "$url" ]; then
     echo "Getting $url"    
-    command=""
-    if grep -q "^REMOVE_DELETED$" $UserConfig; then    
-      # Remove deleted, do a sync.
-      command="sync"
-    else
-      # Don't remove deleted, do a copy.
-      command="copy"
-    fi
     remote=$(echo "$url" | cut -d: -f1)
     dir="$Lib/$remote/"
     mkdir -p "$dir"
-    echo ${RCLONE} ${command} --no-check-certificate -v --config ${RCloneConfig} \"$url\" \"$dir\"
-    ${RCLONE} ${command} --no-check-certificate -v --config ${RCloneConfig} "$url" "$dir"
+    RCLONE_COMMAND="${RCLONE} ${RCLONE_OP} --no-check-certificate --error-on-no-transfer -v --config ${RCloneConfig}"
+    echo ${RCLONE_COMMAND} \"$url\" \"$dir\"
+    ${RCLONE_COMMAND} "$url" "$dir"
   fi
 done < $UserConfig
 
