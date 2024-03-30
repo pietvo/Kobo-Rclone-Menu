@@ -46,16 +46,19 @@ then
       echo "NickelDBus not found: installing it!"
       wget "https://github.com/shermp/NickelDBus/releases/download/0.2.0/KoboRoot.tgz" -O - | tar xz -C /
   fi
-  if [ -f "${RCLONE}" ]
+  RCLONEVERSION=1.66.0
+  RCLONESIZE=56885400
+  if [[ -f "${RCLONE}"  &&  $(stat -c %s "${RCLONE}") = "${RCLONESIZE}" ]]
   then
       echo "rclone found"
   else
-      echo "rclone not found: installing it!"
+      echo "rclone not found: installing rclone version ${RCLONEVERSION} (size ${RCLONESIZE})!"
       mkdir -p "${RCLONEDIR}"
       rcloneTemp="${RCLONEDIR}/rclone.tmp.zip"
       rm -f "${rcloneTemp}"
-      wget "https://github.com/rclone/rclone/releases/download/v1.64.0/rclone-v1.64.0-linux-arm-v7.zip" -O "${rcloneTemp}"
-      unzip -p "${rcloneTemp}" rclone-v1.64.0-linux-arm-v7/rclone > ${RCLONE}
+      # get rclone distribution with wget, unzip it, but remove it if it failed
+      wget "https://github.com/rclone/rclone/releases/download/v${RCLONEVERSION}/rclone-v${RCLONEVERSION}-linux-arm-v7.zip" -O "${rcloneTemp}" &&
+      unzip -p "${rcloneTemp}" rclone-v${RCLONEVERSION}-linux-arm-v7/rclone > ${RCLONE} || rm ${RCLONE}
       rm -f "${rcloneTemp}"
   fi
 fi
