@@ -70,6 +70,7 @@ then
   fi
 fi
 
+TRANSFERRED=0
 while read url || [ -n "$url" ]; do
   if echo "$url" | grep -q '^#'; then
     continue
@@ -81,13 +82,29 @@ while read url || [ -n "$url" ]; do
     RCLONE_COMMAND="${RCLONE} ${RCLONE_OP} --no-check-certificate --error-on-no-transfer -v --config ${RCloneConfig}"
     echo ${RCLONE_COMMAND} \"$url\" \"$dir\"
     ${RCLONE_COMMAND} "$url" "$dir"
+    rclone_status=$?
+    # Exit code 9 = success, but no files transferred
+    # because of option --error-on-no-transfer
+    # In case of error, we assume that some files may have been transferred
+    if [ $rclone_status != 9 ]
+    then
+        TRANSFERRED=1
+        if [ $rclone_status != 0 ]
+        then echo "rclone: Error code $rclone_status"
+        fi
+    fi
   fi
 done < $UserConfig
 
 if [ "$TEST" = "" ]
 then
-    # Use NickelDBus for library refresh
-    /usr/bin/qndb -t 3000 -s pfmDoneProcessing -m pfmRescanBooksFull
+    if [ $TRANSFERRED = 1 ]
+    then
+       # Use NickelDBus for library refresh
+       /usr/bin/qndb -t 3000 -s pfmDoneProcessing -m pfmRescanBooksFull
+    else
+        echo "No files transferred"
+    fi
 fi
 
 rm "$Logs/index" >/dev/null 2>&1
