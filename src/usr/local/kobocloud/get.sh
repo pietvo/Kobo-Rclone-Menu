@@ -79,7 +79,9 @@ while read url || [ -n "$url" ]; do
     remote=$(echo "$url" | cut -d: -f1)
     dir="$Lib/$remote/"
     mkdir -p "$dir"
-    RCLONE_COMMAND="${RCLONE} ${RCLONE_OP} --no-check-certificate --error-on-no-transfer -v --config ${RCloneConfig}"
+    # --modify-window 3s
+    # see https://www.mobileread.com/forums/showpost.php?p=4299209&postcount=11
+    RCLONE_COMMAND="${RCLONE} ${RCLONE_OP} --modify-window 3s --no-check-certificate --error-on-no-transfer -v --config ${RCloneConfig}"
     echo ${RCLONE_COMMAND} \"$url\" \"$dir\"
     ${RCLONE_COMMAND} "$url" "$dir"
     rclone_status=$?
