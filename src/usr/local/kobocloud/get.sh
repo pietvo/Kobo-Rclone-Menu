@@ -15,7 +15,6 @@ fi
 
 RCLONE_OP=""
 if grep -q "^REMOVE_DELETED$" $UserConfig; then
-	echo "$Lib/filesList.log" > "$Lib/filesList.log"
     echo "Will delete files no longer present on remote"
     # Remove deleted, do a sync.
     RCLONE_OP="sync"
