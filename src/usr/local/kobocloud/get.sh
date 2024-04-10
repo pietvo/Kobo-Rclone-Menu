@@ -1,5 +1,5 @@
 #!/bin/sh
-#Kobocloud getter
+#RClone Menu command
 
 TEST=$1
 
@@ -11,16 +11,6 @@ if grep -q '^UNINSTALL$' $UserConfig; then
     echo "Uninstalling KoboCloud!"
     $KC_HOME/uninstall.sh
     exit 0
-fi
-
-RCLONE_OP=""
-if grep -q "^REMOVE_DELETED$" $UserConfig; then
-    echo "Will delete files no longer present on remote"
-    # Remove deleted, do a sync.
-    RCLONE_OP="sync"
-else
-    # Don't remove deleted, do a copy.
-    RCLONE_OP="copy"
 fi
 
 
@@ -42,31 +32,14 @@ then
     done
 fi
 
-# check for qbdb
-if [ "$PLATFORM" = "Kobo" ]
-then
-  if [ -f "/usr/bin/qndb" ]
-  then
-      echo "NickelDBus found"
-  else
-      echo "NickelDBus not found: installing it!"
-      wget "https://github.com/shermp/NickelDBus/releases/download/0.2.0/KoboRoot.tgz" -O - | tar xz -C /
-  fi
-  RCLONEVERSION=1.66.0
-  RCLONESIZE=56885400
-  if [[ -f "${RCLONE}"  &&  $(stat -c %s "${RCLONE}") = "${RCLONESIZE}" ]]
-  then
-      echo "rclone found"
-  else
-      echo "rclone not found: installing rclone version ${RCLONEVERSION} (size ${RCLONESIZE})!"
-      mkdir -p "${RCLONEDIR}"
-      rcloneTemp="${RCLONEDIR}/rclone.tmp.zip"
-      rm -f "${rcloneTemp}"
-      # get rclone distribution with wget, unzip it, but remove it if it failed
-      wget "https://github.com/rclone/rclone/releases/download/v${RCLONEVERSION}/rclone-v${RCLONEVERSION}-linux-arm-v7.zip" -O "${rcloneTemp}" &&
-      unzip -p "${rcloneTemp}" rclone-v${RCLONEVERSION}-linux-arm-v7/rclone > ${RCLONE} || rm ${RCLONE}
-      rm -f "${rcloneTemp}"
-  fi
+RCLONE_OP=""
+if grep -q "^REMOVE_DELETED$" $UserConfig; then
+    echo "Will delete files no longer present on remote"
+    # Remove deleted, do a sync.
+    RCLONE_OP="sync"
+else
+    # Don't remove deleted, do a copy.
+    RCLONE_OP="copy"
 fi
 
 TRANSFERRED=0
