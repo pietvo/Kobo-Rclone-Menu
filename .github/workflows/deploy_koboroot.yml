@@ -15,11 +15,6 @@ jobs:
           uses: actions/checkout@v2
           with:
             path: repo
-            
-        - name: Get cacert
-          run:  |
-            cd repo
-            ./updateCABundle.sh
           
         - name: Create KoboRoot
           run: |
