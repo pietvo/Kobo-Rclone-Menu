@@ -1,4 +1,4 @@
-# KoboCloud
+# Kobo-Rclone-Menu
 A set of scripts to synchronize a kobo reader with popular cloud services, using [rclone](https://rclone.org).
 
 Some example supported cloud services:
@@ -34,9 +34,9 @@ After the installation process:
 2. Run `rclone config` to create a config file and add your remote Cloud services ([detailed instructions](https://rclone.org/remote_setup/#configuring-by-copying-the-config-file)).
     - You can add as many remote Cloud services as you need, but note the name you give each remote.
 3. Plug your Kobo back into the computer
-4. Copy the rclone config file to `.add/kobocloud/rclone.conf`
+4. Copy the rclone config file to `.add/kobo-rclone-menu/rclone.conf`
     - Run `rclone config file` on your computer to find the file.
-5. Edit the configuration file located at `.add/kobocloud/kobocloudrc`, and add each remote:directory pair (one per line).
+5. Edit the configuration file located at `.add/kobo-rclone-menu/kobo-rclonerc`, and add each remote:directory pair (one per line).
 
 ## Configuration example
 
@@ -56,7 +56,7 @@ rclone supports many, many other remote types. See https://rclone.org/docs/ for 
 ### Matching remote server
 To delete files from library when they are no longer in the remote server:
 
-- Edit the kobocloudrc file so it contains the phrase `REMOVE_DELETED` in a single line (all capital, no spaces before or after).
+- Edit the kobo-rclonerc file so it contains the phrase `REMOVE_DELETED` in a single line (all capital, no spaces before or after).
 - Restart your Kobo.
 
 The next time the Kobo is connected to the internet, it will delete any files (it will not delete directories) that are not in the remote server.
@@ -70,18 +70,18 @@ The new files will be downloaded when the kobo connects to the Internet for a sy
 
 ## Uninstallation
 
-To properly uninstall KoboCloud:
+To properly uninstall Kobo-Rclone-Menu:
 
-- Edit the kobocloudrc file so that it contains the word `UNINSTALL` in a single line (all capital, no spaces before or after)
+- Edit the kobo-rclonerc file so that it contains the word `UNINSTALL` in a single line (all capital, no spaces before or after)
 - Restart your Kobo
 
 The next time the Kobo is connected to the Internet, the program will delete itself.
 
-Note: The directory .add/kobocloud will not be deleted: after connecting the device to a computer, you should move the files from the Library subfolder in order not to lose your content, and delete the whole kobocloud directory manually.
+Note: The directory .add/kobo-rclone-menu will not be deleted: after connecting the device to a computer, you should move the files from the Library subfolder in order not to lose your content, and delete the whole kobo-rclone-menu directory manually.
 
 ## Installation from source code
 
-To install KoboCloud from source code:
+To install Kobo-Rclone-Menu from source code:
 
 - Download this repository
 - Compile the code into an archive format (instructions below)
@@ -90,7 +90,7 @@ To install KoboCloud from source code:
 ### Compiling
 
 - Move to the project directory root
-- Open the configuration file located at `src/usr/local/kobocloud/kobocloudrc.tmpl`
+- Open the configuration file located at `src/usr/local/kobo-rclone-menu/kobo-rclonerc.tmpl`
 - Add the links to the cloud services (see the configuration example that follow below)
 - Run `sh ./makeKoboRoot.sh`
 
@@ -100,7 +100,7 @@ Now you can follow [installation](#installation) instructions.
 
 ## Troubleshooting
 
-KoboCloud keeps a log of each session in the .add/kobocloud/get.log file. If something goes wrong, useful information can be found there. Please send a copy of this file with every bug report.
+Kobo-Rclone-Menu keeps a log of each session in the .add/kobo-rclone-menu/get.log file. If something goes wrong, useful information can be found there. Please send a copy of this file with every bug report.
 
 ## Known issues
 
@@ -112,7 +112,7 @@ KoboCloud keeps a log of each session in the .add/kobocloud/get.log file. If som
 
 ## Acknowledgment
 
-KoboCloud installs [NickelDBus](https://github.com/shermp/NickelDBus) if not present. Thanks to shermp for providing this!
+Kobo-Rclone-Menu installs [NickelDBus](https://github.com/shermp/NickelDBus) if not present. Thanks to shermp for providing this!
 Thanks to the defunct SendToKobo service for the inspiration of the project and for the basis of the scripts.
 Curl for Kobo was downloaded from here: https://www.mobileread.com/forums/showthread.php?p=3734553 . Thanks to NiLuJe for providing it!
 Thanks to Christoph Burschka for the help in updating this tool to the recent versions of kobo and nextcloud.

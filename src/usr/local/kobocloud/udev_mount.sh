@@ -12,7 +12,7 @@ if [ ! -e $UserConfig ]; then
     cp $ConfigFile $UserConfig
   else
     echo "# Add your rclone remote:folder/on/remote pairs to this file" > $UserConfig
-    echo "# Remove the # from the following line to uninstall KoboCloud" >> $UserConfig
+    echo "# Remove the # from the following line to uninstall Kobo-Rclone-Menu" >> $UserConfig
     echo "#UNINSTALL" >> $UserConfig
   fi
 fi

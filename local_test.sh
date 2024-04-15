@@ -62,7 +62,7 @@ else
     exit 1
 fi
 
-. src/usr/local/kobocloud/config_pc.sh
+. src/usr/local/kobo-rclone-menu/config_pc.sh
 
 mkdir -p $Lib
 for file in ${TestFiles[@]}
@@ -80,7 +80,7 @@ then
     touch "$Lib/01/delete_me.epub"
 fi
 
-src/usr/local/kobocloud/get.sh TEST
+src/usr/local/kobo-rclone-menu/get.sh TEST
 
 if [ "$TEST_DELETED" = true ]
 then

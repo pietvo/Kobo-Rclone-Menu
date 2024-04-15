@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kobo Cloud Sync | KoboCloud</title>
+  <title>Kobo Cloud Sync | Kobo-Rclone-Menu</title>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
     <h1>Kobo Cloud Sync</h1>
     <p>Paste the following command in your terminal (click to copy):</p>
     <code id="command" onclick="copy()"></code>
-    <p>Then add the line starting with <code>DropboxApp:</code> to your kobocloudrc file.</p>
+    <p>Then add the line starting with <code>DropboxApp:</code> to your kobo-rclonerc file.</p>
   </div>
 </body>
 
@@ -39,7 +39,7 @@
 -d redirect_uri=${url} \
 -d code_verifier=0000000000000000000000000000000000000000000 \
 -d code=${code} | sed 's/.*"refresh_token": "\\([^"]*\\)", ".*/\\n\
-Add this line to your kobocloudrc file:\\n\\nDropboxApp:${client_id}:\\1\\n\\n/'`;
+Add this line to your kobo-rclonerc file:\\n\\nDropboxApp:${client_id}:\\1\\n\\n/'`;
 
   out.innerText = command;
   let copy = () => {

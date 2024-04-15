@@ -1,7 +1,7 @@
 #!/bin/bash
 
 KC_HOME=$(dirname $0)
-ConfigFile=$KC_HOME/kobocloudrc.tmpl
+ConfigFile=$KC_HOME/kobo-rclonerc.tmpl
 
 if uname -a | grep -q 'x86\|Darwin'
 then

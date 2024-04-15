@@ -6,9 +6,9 @@ TEST=$1
 #load config
 . $(dirname $0)/config.sh
 
-#check if Kobocloud contains the line "UNINSTALL"
+#check if Kobo-Rclone-Menu contains the line "UNINSTALL"
 if grep -q '^UNINSTALL$' $UserConfig; then
-    echo "Uninstalling KoboCloud!"
+    echo "Uninstalling Kobo-Rclone-Menu!"
     $KC_HOME/uninstall.sh
     exit 0
 fi

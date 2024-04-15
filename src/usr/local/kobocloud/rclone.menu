@@ -1,1 +1,1 @@
-menu_item:main:Download Books:cmd_spawn:quiet:/usr/local/kobocloud/get.sh > $Logs/get.log 2>&1 
+menu_item:main:Download Books:cmd_spawn:quiet:/usr/local/kobo-rclone-menu/get.sh > $Logs/get.log 2>&1 
