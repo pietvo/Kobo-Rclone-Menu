@@ -36,8 +36,8 @@ After the installation process:
 2. Run `rclone config` to create a config file and add your remote Cloud services ([detailed instructions](https://rclone.org/remote_setup/#configuring-by-copying-the-config-file)).
     - You can add as many remote Cloud services as you need, but note the name you give each remote.
 3. Plug your Kobo back into the computer.
-4. Run `rclone config file` on your computer to find the rclone config file. Copy that file to `.adds/kobo-rclone-menu/rclone.conf`
-5. Edit the configuration file located at `.adds/kobo-rclone-menu/kobo-rclonerc`, and add each remote:directory pair (one per line) as illustrated below.
+4. Run `rclone config file` on your computer to find the rclone config file. Copy that file to `.add/kobo-rclone-menu/rclone.conf`
+5. Edit the configuration file located at `.add/kobo-rclone-menu/kobo-rclonerc`, and add each remote:directory pair (one per line) as illustrated below.
 
 ## Configuration example
 
@@ -79,7 +79,7 @@ To properly uninstall Kobo-Rclone-Menu:
 
 The next time the Kobo is connected to the Internet, the program will delete itself. `NickelDBus` and `NickelMenu` will not be uninstalled, but `rclone` will.
 
-Note: The downloaded ebooks in the folder `.adds/kobo-rclone-menu` will not be deleted: after connecting the device to a computer, you should move the files from the `Library` subfolder in order not to lose your content, and delete the whole kobo-rclone-menu directory manually.
+Note: The downloaded ebooks in the folder `.add/kobo-rclone-menu` will not be deleted: after connecting the device to a computer, you should move the files from the `Library` subfolder in order not to lose your content, and delete the whole kobo-rclone-menu directory manually.
 
 ## Installation from source code
 
@@ -102,14 +102,14 @@ Now you can follow [installation](#installation) instructions.
 
 ## Troubleshooting
 
-Kobo-Rclone-Menu keeps a log of the installation process in the `.adds/kobo-rclone-menu/setup.log` file and for the download session in the `.adds/kobo-rclone-menu/get.log` file. If something goes wrong, useful information can be found there. Please send a copy of this file with every bug report.
+Kobo-Rclone-Menu keeps a log of the installation process in the `.add/kobo-rclone-menu/setup.log` file and for the download session in the `.add/kobo-rclone-menu/get.log` file. If something goes wrong, useful information can be found there. Please send a copy of this file with every bug report.
 
 ## Known issues
 
 * Some versions of Kobo make the same book appear twice in the library. This is because it scans the internal directory where the files are saved as well as the "official" folders. To solve this problem find the `Kobo eReader.conf` file inside your `.kobo/Kobo` folder and make sure the following line (which prevents the syncing of dotfiles and dotfolders) is set in the `[FeatureSettings]` section:
 ```
   [FeatureSettings]
-  ExcludeSyncFolders=\\.(?!add|adobe).*?
+  ExcludeSyncFolders=\\\.(?!add|adobe).*?
 ```
 
 ## Acknowledgment
