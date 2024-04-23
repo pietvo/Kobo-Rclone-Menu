@@ -1,8 +1,9 @@
 #!/bin/sh
-Logs=/tmp/Kobo-Rclone-Menu
-Lib=/tmp/Kobo-Rclone-Menu/Library
-SD=/tmp/Kobo-Rclone-Menu/sd
-UserConfig=/tmp/Kobo-Rclone-Menu/kobo-rclonerc
+MAINDIR=/tmp/Kobo-Rclone-Menu
+Logs=${MAINDIR}
+Lib=${MAINDIR}/Library
+SD=${MAINDIR}/sd
+UserConfig=${MAINDIR}/kobo-rclonerc
 RCloneConfig=~/.config/rclone/rclone.conf
 Dt="date +%Y-%m-%d_%H:%M:%S"
 RCLONEDIR="/usr/bin/"
