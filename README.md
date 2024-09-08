@@ -37,7 +37,7 @@ After the installation process:
     - You can add as many remote Cloud services as you need, but note the name you give each remote.
 3. Plug your Kobo back into the computer.
 4. Run `rclone config file` on your computer to find the rclone config file. Copy that file to `.add/kobo-rclone-menu/rclone.conf`
-5. Edit the configuration file located at `.add/kobo-rclone-menu/kobo-rclonerc`, and add each remote:directory pair (one per line) as illustrated below.
+5. Edit the configuration file located at `.add/kobo-rclone-menu/kobo-rclonerc` on your Kobo, and add each remote:directory pair (one per line) as illustrated below.
 
 ## Configuration example
 
@@ -68,18 +68,21 @@ The next time the Kobo is connected to the internet, it will delete any files (i
 
 ## Usage
 
-The installation will provide a new menu item `Download Books` in the NickelMenu menu. The new files (ebooks) will be downloaded when you click this menu. Sometimes few minutes is needed after the sync process for the device to recognize and import new downloaded content.
+The installation will provide a new menu item `Download Books` in the NickelMenu menu. The new files (ebooks) will be downloaded when you click this menu. Sometimes a few minutes are needed after the sync process for the device to recognize and import new downloaded content.
 
 ## Uninstallation
 
 To properly uninstall Kobo-Rclone-Menu:
 
-- Edit the kobo-rclonerc file so that it contains the word `UNINSTALL` in a single line (all capital, no spaces before or after)
+- Edit the `kobo-rclonerc` file mentioned above so that it contains the word `UNINSTALL` in a single line (all capital, no spaces before or after)
 - Restart your Kobo
 
 The next time the Kobo is connected to the Internet, the program will delete itself. `NickelDBus` and `NickelMenu` will not be uninstalled, but `rclone` will.
 
+To also uninstall `NickelMenu`, just create a new file named `uninstall` in `.adds/nm/` on your Kobo. To uninstall `NickelDBus`,  delete the file called `nickeldbus` in the `.adds` directory. After this, restart your Kobo.
+
 Note: The downloaded ebooks in the folder `.add/kobo-rclone-menu` will not be deleted: after connecting the device to a computer, you should move the files from the `Library` subfolder in order not to lose your content, and delete the whole kobo-rclone-menu directory manually.
+
 
 ## Installation from source code
 
