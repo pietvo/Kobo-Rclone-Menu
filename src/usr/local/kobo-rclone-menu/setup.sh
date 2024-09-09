@@ -51,10 +51,8 @@ then
       echo "NickelMenu not found: installing it!"
       wget "https://github.com/pgaskin/NickelMenu/releases/latest/download/KoboRoot.tgz" -O - | tar xz -C /
   fi
-  if [ ! -f ${MENUDIR}/rclone.menu ]
-  then sed "s+\\\$Logs+$Logs+" $KC_HOME/rclone.menu > ${MENUDIR}/rclone.menu
-       echo "Installing rclone.menu"
-  fi
+  echo "Installing rclone.menu"
+  sed "s+\\\$Logs+$Logs+" $KC_HOME/rclone.menu > ${MENUDIR}/rclone.menu
   
   RCLONEVERSION=1.68.0
   RCLONESIZE=55967896
