@@ -56,8 +56,8 @@ then
        echo "Installing rclone.menu"
   fi
   
-  RCLONEVERSION=1.67.0
-  RCLONESIZE=56819874
+  RCLONEVERSION=1.68.0
+  RCLONESIZE=55967896
 
   # check for rclone
   if [[ -f "${RCLONE}"  &&  $(stat -c %s "${RCLONE}") = "${RCLONESIZE}" ]]
