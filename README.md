@@ -65,10 +65,13 @@ The next time the Kobo is connected to the internet, it will delete any files (i
 
 (This works by running `rclone sync` instead of `rclone copy`.)
 
-
 ## Usage
 
 The installation will provide a new menu item `Download Books` in the NickelMenu menu. The new files (ebooks) will be downloaded when you click this menu. Sometimes a few minutes are needed after the sync process for the device to recognize and import new downloaded content.
+
+## Log Files
+
+The log files of both the setup procedure and the last download can be found in the directory `.add/kobo-rclone-menu/kobo-rclonerc` on your Kobo. These logs are also collected in an "Ebook" (TXT file) called `Kobo-Rclone-Menu-Log` in the root of your Kobo. The first time you may have to reboot to make it visible. In this way you can inspect the logs without having to connect your Kobo to a computer. This file is cumulative, so you might occasionally remove it to start a fresh one.
 
 ## Uninstallation
 

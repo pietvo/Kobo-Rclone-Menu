@@ -15,5 +15,5 @@ fi
 [ ! -e "$Lib" ] && mkdir -p "$Lib" >/dev/null 2>&1
 [ ! -e "$SD" ] && mkdir -p "$SD" >/dev/null 2>&1
 
-#output to log
-$KC_HOME/setup.sh > $Logs/setup.log 2>&1 &
+#output to log and "Ebook".
+($KC_HOME/setup.sh > $Logs/setup.log 2>&1 ; $KC_HOME/add-log.sh setup.log) &
