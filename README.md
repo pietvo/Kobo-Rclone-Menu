@@ -26,7 +26,7 @@ Copy it into the Kobo device:
 
 **Note for Mac/Safari users:** Safari automatically unpacks `KoboRoot.tgz` into `KoboRoot.tar` after downloading. Please make sure that you transfer the `.tgz` file to your Kobo, and **not** the `.tar`. Either use a different browser to download the package, or re-pack it (using `gzip`) before transferring.
 
-The installation procedure will also install `NickelDBus`, `NickelMenu`, and `rclone`. Sometimes the installation may fail, for example if Wifi is not available. Then try to restart your Kobo.
+The installation procedure will also install `NickelDBus`, `NickelMenu`, and `rclone`. Sometimes the installation may fail, for example if Wifi is not available. **So make sure your Kobo is connected to Wifi.** Then restart your Kobo.
 
 ## Configuration
 
