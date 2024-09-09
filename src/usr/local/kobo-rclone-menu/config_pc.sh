@@ -1,5 +1,6 @@
 #!/bin/sh
-MAINDIR=/tmp/Kobo-Rclone-Menu
+ROOT=/tmp/Kobo-Rclone-Menu
+MAINDIR=$ROOT
 Logs=${MAINDIR}
 Lib=${MAINDIR}/Library
 SD=${MAINDIR}/sd
