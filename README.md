@@ -1,4 +1,4 @@
-# Kobo-Rclone-Menu v0.4
+# Kobo-Rclone-Menu v0.5
 
 A set of scripts to synchronize a kobo e-reader with popular cloud services, using [rclone](https://rclone.org).
 
