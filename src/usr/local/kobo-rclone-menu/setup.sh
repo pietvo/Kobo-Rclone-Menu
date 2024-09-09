@@ -65,6 +65,7 @@ then
       echo "rclone found"
   else
       echo "rclone not found: installing rclone version ${RCLONEVERSION} (size ${RCLONESIZE})!"
+      echo "from https://github.com/rclone/rclone/releases/download/v${RCLONEVERSION}/rclone-v${RCLONEVERSION}-linux-arm-v7.zip"
       mkdir -p "${RCLONEDIR}"
       rcloneTemp="${RCLONEDIR}/rclone.tmp.zip"
       rm -f "${rcloneTemp}"
